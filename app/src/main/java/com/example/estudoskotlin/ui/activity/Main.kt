@@ -3,13 +3,14 @@ package com.example.estudoskotlin.ui.activity
 import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.estudoskotlin.R
 import com.example.estudoskotlin.model.Produtos
 import com.example.estudoskotlin.ui.recyclerview.adapter.ListaProdutosAdapter
 import java.math.BigDecimal
 
-class Main : Activity() {
+class Main : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
