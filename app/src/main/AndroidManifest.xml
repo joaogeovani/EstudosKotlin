@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EstudosKotlin">
         <activity
-            android:name=".ui.activity.Main"
+            android:name=".ui.activity.FormProdutoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.FormProdutoActivity"
+            android:name=".ui.activity.Main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
