@@ -11,16 +11,18 @@ import com.example.estudoskotlin.model.Produtos
 
 class ListaProdutosAdapter(
         private val context: Context,
-        private val produtos : List<Produtos>
+        produtos : List<Produtos>
 ) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
+
+    private val produtos = produtos.toMutableList()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun vincula(produto: Produtos) {
-            val item = itemView.findViewById<TextView>(R.id.produto)
+            val item = itemView.findViewById<TextView>(R.id.produto_item_nome)
             item.text = produto.nome
-            val desc = itemView.findViewById<TextView>(R.id.descricao)
+            val desc = itemView.findViewById<TextView>(R.id.produto_item_descricao)
             desc.text = produto.descricao
-            val preco = itemView.findViewById<TextView>(R.id.valor)
+            val preco = itemView.findViewById<TextView>(R.id.produto_item_valor)
             preco.text = produto.valor.toPlainString()
         }
     }
@@ -37,5 +39,12 @@ class ListaProdutosAdapter(
     }
 
     override fun getItemCount(): Int = produtos.size
+
+    fun atualiza(produtos: List<Produtos>) {
+        this.produtos.clear()
+        this.produtos.addAll(produtos)
+        notifyDataSetChanged()
+
+    }
 
 }
