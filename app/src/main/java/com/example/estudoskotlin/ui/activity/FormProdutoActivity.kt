@@ -7,18 +7,24 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.estudoskotlin.R
 import com.example.estudoskotlin.dao.ProdutosDAO
+import com.example.estudoskotlin.databinding.ActivityFormProdutoBinding
 import com.example.estudoskotlin.model.Produtos
 import java.math.BigDecimal
 
-class FormProdutoActivity : AppCompatActivity(R.layout.activity_form_produto) {
+class FormProdutoActivity : AppCompatActivity() {
+
+    private val binding by lazy {
+        ActivityFormProdutoBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
         salvarProduto()
     }
 
     private fun salvarProduto() {
-        val salvarProduto = findViewById<Button>(R.id.botao_salvar)
+        val salvarProduto = binding.botaoSalvar
         val dao = ProdutosDAO()
         salvarProduto.setOnClickListener {
             val produtoCriado = criaProduto()
@@ -29,11 +35,11 @@ class FormProdutoActivity : AppCompatActivity(R.layout.activity_form_produto) {
     }
 
     private fun criaProduto(): Produtos {
-        val campoNome = findViewById<EditText>(R.id.activity_form_produto_nome)
+        val campoNome = binding.activityFormProdutoNome
         val nome = campoNome.text.toString()
-        val campoDesc = findViewById<EditText>(R.id.activity_form_produto_desc)
+        val campoDesc = binding.activityFormProdutoDesc
         val desc = campoDesc.text.toString()
-        val campoValor = findViewById<EditText>(R.id.activity_form_produto_valor)
+        val campoValor = binding.activityFormProdutoValor
         val valorEmTexto = campoValor.text.toString()
         val valor = if (valorEmTexto.isBlank()) {
             BigDecimal.ZERO
